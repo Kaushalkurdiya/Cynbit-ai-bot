@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
+import { API } from "../config.js";
+
+
+
 const GREETING = { role: "assistant", content: "Hi! Ask me anything about Cynbit or BitElevate." };
 
 export default function ChatWidget() {
@@ -24,7 +28,7 @@ export default function ChatWidget() {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch(`${API}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         // drop the greeting: most LLM APIs require the first message to be from the user
