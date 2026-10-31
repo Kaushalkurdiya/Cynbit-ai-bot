@@ -1,5 +1,8 @@
 import { useState } from "react";
 import Section from "../components/Section.jsx";
+import { API } from "../config.js";
+
+
 
 const steps = [
   ["Pick a lab", "Choose one of six tracks, from Full Stack to UI/UX."],
@@ -46,7 +49,9 @@ export default function BitElevate() {
     e.preventDefault();
     setStatus("Sending...");
     try {
-      const res = await fetch("/api/enroll", {
+
+
+const res = await fetch(`${API}/api/enroll`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
